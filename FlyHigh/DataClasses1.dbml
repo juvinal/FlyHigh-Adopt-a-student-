@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DbSystem" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=DbSystem;Integrated Security=True" SettingsObjectName="FlyHigh.Properties.Settings" SettingsPropertyName="DbSystemConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.myStudents" Member="myStudents">
+    <Type Name="myStudent">
+      <Column Name="StudBankID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Lastname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblUser" Member="tblUsers">
+    <Type Name="tblUser">
+      <Column Name="BankID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PAssword" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Usertype" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="tblUser_StudentReference" Member="StudentReferences" ThisKey="BankID" OtherKey="BankID" Type="StudentReference" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StudentReference" Member="StudentReferences">
+    <Type Name="StudentReference">
+      <Column Name="BankID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ReferenceLastname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="ReferenceFirstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="ReferenceContact" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Form137" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Endorsement" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Others" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="tblUser_StudentReference" Member="tblUser" ThisKey="BankID" OtherKey="BankID" Type="tblUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDonor" Member="tblDonors">
+    <Type Name="tblDonor">
+      <Column Name="BankID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Profile" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblStudent" Member="tblStudents">
+    <Type Name="tblStudent">
+      <Column Name="BankID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Profile" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Endorsement" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ReferenceLastname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="ReferenceFirstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="ReferenceContact" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_Accounts" Method="sp_Accounts">
+    <ElementType Name="sp_AccountsResult">
+      <Column Name="BankID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PAssword" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Usertype" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateStudent" Method="UpdateStudent">
+    <Parameter Name="BankID" Parameter="bankID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Usertype" Parameter="usertype" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_AddStudent" Method="sp_AddStudent">
+    <Parameter Name="StudBankID" Parameter="studBankID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Lastname" Parameter="lastname" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Gender" Parameter="gender" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(25)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_DeleteStud" Method="sp_DeleteStud">
+    <Parameter Name="BankID" Parameter="bankID" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_MyStudents" Method="sp_MyStudents">
+    <Parameter Name="Usertype" Parameter="usertype" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="sp_MyStudentsResult">
+      <Column Name="BankID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Lastname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_References" Method="sp_References">
+    <ElementType Name="sp_ReferencesResult">
+      <Column Name="BankID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ReferenceLastname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="ReferenceFirstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="ReferenceContact" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Form137" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Endorsement" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Others" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_SignUp" Method="sp_SignUp">
+    <Parameter Name="BankID" Parameter="bankID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Username" Parameter="username" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Lastname" Parameter="lastname" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Gender" Parameter="gender" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Usertype" Parameter="usertype" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_SignUpStudent" Method="sp_SignUpStudent">
+    <Parameter Name="BankID" Parameter="bankID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Username" Parameter="username" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Lastname" Parameter="lastname" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Firstname" Parameter="firstname" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Gender" Parameter="gender" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contact" Parameter="contact" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Usertype" Parameter="usertype" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="RefLastname" Parameter="refLastname" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="RefFirstname" Parameter="refFirstname" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="RefContact" Parameter="refContact" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Form137" Parameter="form137" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="Endorsement" Parameter="endorsement" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="Others" Parameter="others" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Students" Method="sp_Students">
+    <ElementType Name="sp_StudentsResult">
+      <Column Name="BankID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Lastname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
